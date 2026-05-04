@@ -1,12 +1,19 @@
 import { Link, useLocation } from "@tanstack/react-router";
 
-const tabs = [
+type Tab = {
+  to: "/" | "/budget" | "/add-expense" | "/insights" | "/profile";
+  icon: ({ className }: { className?: string }) => React.ReactNode;
+  label: string;
+  isCenter?: boolean;
+};
+
+const tabs: Tab[] = [
   { to: "/", icon: HomeIcon, label: "Home" },
   { to: "/budget", icon: WalletIcon, label: "Budget" },
   { to: "/add-expense", icon: PlusIcon, label: "Add", isCenter: true },
   { to: "/insights", icon: ChartIcon, label: "Insights" },
   { to: "/profile", icon: UserIcon, label: "Profile" },
-] as const;
+];
 
 export function BottomNav() {
   const location = useLocation();

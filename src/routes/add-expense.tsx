@@ -18,7 +18,7 @@ function AddExpense() {
   const { addExpense } = useExpenses();
   const navigate = useNavigate();
   const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState(CATEGORIES[0].name);
+  const [category, setCategory] = useState<string>(CATEGORIES[0].name);
   const [date, setDate] = useState(format(new Date(), "yyyy-MM-dd"));
   const [note, setNote] = useState("");
 

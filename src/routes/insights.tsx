@@ -116,7 +116,7 @@ function InsightsPage() {
               <XAxis dataKey="date" tick={{ fontSize: 10 }} stroke="var(--color-muted-foreground)" />
               <YAxis tick={{ fontSize: 10 }} stroke="var(--color-muted-foreground)" width={45} tickFormatter={(v: number) => `₹${v}`} />
               <Tooltip
-                formatter={(value: number) => [formatINR(value), "Spent"]}
+                formatter={(value: any) => [formatINR(Number(value)), "Spent"]}
                 contentStyle={{ borderRadius: 12, border: "1px solid var(--color-border)", background: "var(--color-card)" }}
               />
               <Line type="monotone" dataKey="amount" stroke="var(--color-primary)" strokeWidth={2.5} dot={{ r: 3 }} activeDot={{ r: 5 }} />
@@ -139,7 +139,7 @@ function InsightsPage() {
                     <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
                   ))}
                 </Pie>
-                <Tooltip formatter={(value: number) => formatINR(value)} contentStyle={{ borderRadius: 12 }} />
+                <Tooltip formatter={(value: any) => formatINR(Number(value))} contentStyle={{ borderRadius: 12 }} />
               </PieChart>
             </ResponsiveContainer>
             <div className="mt-3 flex flex-wrap gap-2">
