@@ -1,4 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { BottomNav } from "@/components/BottomNav";
+import { SplashAndOnboarding } from "@/components/SplashAndOnboarding";
 
 import appCss from "../styles.css?url";
 
@@ -28,21 +30,21 @@ export const Route = createRootRoute({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { title: "Finova — Smart Expense Tracker" },
+      { name: "description", content: "Track expenses, manage budgets, and get smart spending insights in INR." },
+      { name: "author", content: "Finova" },
+      { property: "og:title", content: "Finova — Smart Expense Tracker" },
+      { property: "og:description", content: "Track expenses, manage budgets, and get smart spending insights in INR." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "theme-color", content: "#6366f1" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" },
     ],
   }),
   shellComponent: RootShell,
@@ -65,5 +67,12 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <SplashAndOnboarding>
+      <div className="mx-auto max-w-lg min-h-screen bg-background">
+        <Outlet />
+        <BottomNav />
+      </div>
+    </SplashAndOnboarding>
+  );
 }
