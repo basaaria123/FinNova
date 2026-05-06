@@ -40,7 +40,7 @@ function AddExpense() {
       <h1 className="text-xl font-bold text-foreground mb-6">Add Expense</h1>
       <form onSubmit={handleSubmit} className="space-y-5">
         {/* Amount */}
-        <div>
+        <div className="animate-fade-in-up">
           <label className="mb-1.5 block text-sm font-medium text-foreground">Amount (₹)</label>
           <div className="finova-card flex items-center px-4">
             <span className="text-lg font-semibold text-muted-foreground">₹</span>
@@ -61,16 +61,17 @@ function AddExpense() {
         <div>
           <label className="mb-2 block text-sm font-medium text-foreground">Category</label>
           <div className="grid grid-cols-4 gap-2">
-            {CATEGORIES.map((c) => (
+            {CATEGORIES.map((c, i) => (
               <button
                 key={c.name}
                 type="button"
                 onClick={() => setCategory(c.name)}
-                className={`flex flex-col items-center gap-1 rounded-xl p-3 text-xs font-medium transition-all ${
+                className={`btn-animated flex flex-col items-center gap-1 rounded-xl p-3 text-xs font-medium ${
                   category === c.name
                     ? "gradient-primary text-primary-foreground shadow-glow"
                     : "bg-muted text-muted-foreground"
                 }`}
+                style={{ animationDelay: `${i * 50}ms` }}
               >
                 <span className="text-lg">{c.icon}</span>
                 <span>{c.name}</span>
@@ -105,7 +106,7 @@ function AddExpense() {
 
         <button
           type="submit"
-          className="w-full rounded-xl gradient-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform active:scale-[0.98]"
+          className="btn-animated w-full rounded-xl gradient-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-glow"
         >
           Add Expense
         </button>

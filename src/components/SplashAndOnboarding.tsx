@@ -7,24 +7,42 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const [phase, setPhase] = useState<"splash" | "onboarding" | "done">(
-    seen ? "done" : "splash"
-  );
+  const [mounted, setMounted] = useState(false);
+  const [phase, setPhase] = useState<"splash" | "onboarding" | "done">("splash");
   const [slide, setSlide] = useState(0);
 
+  // Only run client-side to avoid hydration mismatch
   useEffect(() => {
-    if (phase === "splash") {
-      const t = setTimeout(() => setPhase("onboarding"), 2200);
+    setMounted(true);
+    if (seen) {
+      setPhase("done");
+    }
+  }, [seen]);
+
+  useEffect(() => {
+    if (phase === "splash" && mounted) {
+      const t = setTimeout(() => {
+        if (seen) {
+          setPhase("done");
+        } else {
+          setPhase("onboarding");
+        }
+      }, 2200);
       return () => clearTimeout(t);
     }
-  }, [phase]);
+  }, [phase, mounted, seen]);
 
-  // After onboarding is done, redirect unauthenticated users to login
+  // Redirect unauthenticated users to login
   useEffect(() => {
-    if (phase === "done" && !user && location.pathname !== "/login") {
+    if (mounted && phase === "done" && !user && location.pathname !== "/login") {
       navigate({ to: "/login" });
     }
-  }, [phase, user, location.pathname, navigate]);
+  }, [mounted, phase, user, location.pathname, navigate]);
+
+  // During SSR or before mount, render children to avoid hydration mismatch
+  if (!mounted) {
+    return <>{children}</>;
+  }
 
   if (phase === "splash") {
     return (
@@ -52,7 +70,7 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
     return (
       <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background px-6">
         <div className="animate-fade-in-up max-w-sm text-center w-full">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl gradient-primary shadow-glow">
+          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl gradient-primary shadow-glow animate-pulse-glow">
             <span className="text-2xl">{slides[slide].icon}</span>
           </div>
           <h1 className="text-2xl font-bold text-foreground">{slides[slide].title}</h1>
@@ -63,7 +81,7 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
             {slides.map((_, i) => (
               <div
                 key={i}
-                className={`h-2 rounded-full transition-all ${
+                className={`h-2 rounded-full transition-all duration-300 ${
                   i === slide ? "w-6 bg-primary" : "w-2 bg-muted-foreground/30"
                 }`}
               />
@@ -80,7 +98,7 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
                 navigate({ to: "/login" });
               }
             }}
-            className="mt-8 w-full rounded-xl gradient-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-glow transition-transform active:scale-[0.98]"
+            className="btn-animated mt-8 w-full rounded-xl gradient-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-glow"
           >
             {slide < slides.length - 1 ? "Next" : "Get Started"}
           </button>
@@ -91,7 +109,7 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
                 setPhase("done");
                 navigate({ to: "/login" });
               }}
-              className="mt-3 text-sm text-muted-foreground"
+              className="mt-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               Skip
             </button>
