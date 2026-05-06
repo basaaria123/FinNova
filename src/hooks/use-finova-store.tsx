@@ -87,3 +87,43 @@ export function useOnboarding() {
 
   return { seen, complete };
 }
+
+export interface AuthUser {
+  name: string;
+  email: string;
+}
+
+export function useAuth() {
+  const [user, setUser] = useState<AuthUser | null>(() =>
+    loadJSON("finova_auth_user", null)
+  );
+
+  const login = useCallback((email: string, _password: string) => {
+    const users: Record<string, { name: string; password: string }> = loadJSON("finova_users", {});
+    const entry = users[email];
+    if (!entry) return "No account found with this email";
+    if (entry.password !== _password) return "Incorrect password";
+    const u: AuthUser = { name: entry.name, email };
+    setUser(u);
+    saveJSON("finova_auth_user", u);
+    return null;
+  }, []);
+
+  const signup = useCallback((name: string, email: string, password: string) => {
+    const users: Record<string, { name: string; password: string }> = loadJSON("finova_users", {});
+    if (users[email]) return "An account with this email already exists";
+    users[email] = { name, password };
+    saveJSON("finova_users", users);
+    const u: AuthUser = { name, email };
+    setUser(u);
+    saveJSON("finova_auth_user", u);
+    return null;
+  }, []);
+
+  const logout = useCallback(() => {
+    setUser(null);
+    if (typeof window !== "undefined") localStorage.removeItem("finova_auth_user");
+  }, []);
+
+  return { user, login, signup, logout };
+}
