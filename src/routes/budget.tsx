@@ -9,7 +9,7 @@ export const Route = createFileRoute("/budget")({
   component: BudgetPage,
   head: () => ({
     meta: [
-      { title: "Budget — Finova" },
+      { title: "Budget — FinNova" },
       { name: "description", content: "Set and manage your monthly budget." },
     ],
   }),

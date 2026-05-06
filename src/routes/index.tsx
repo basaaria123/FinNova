@@ -11,7 +11,7 @@ export const Route = createFileRoute("/")({
   component: Dashboard,
   head: () => ({
     meta: [
-      { title: "Finova — Smart Expense Tracker" },
+      { title: "FinNova — Smart Expense Tracker" },
       { name: "description", content: "Track expenses, manage budgets, and get smart spending insights in INR." },
     ],
   }),

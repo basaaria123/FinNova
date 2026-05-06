@@ -7,7 +7,7 @@ export const Route = createFileRoute("/profile")({
   component: ProfilePage,
   head: () => ({
     meta: [
-      { title: "Profile — Finova" },
+      { title: "Profile — FinNova" },
       { name: "description", content: "Manage goals, reports, and settings." },
     ],
   }),
