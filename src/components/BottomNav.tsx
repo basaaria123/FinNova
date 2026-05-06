@@ -26,7 +26,7 @@ export function BottomNav() {
           if (tab.isCenter) {
             return (
               <Link key={tab.to} to={tab.to} className="relative -mt-6">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full gradient-primary shadow-glow">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full gradient-primary shadow-glow btn-animated animate-pulse-glow">
                   <tab.icon className="h-6 w-6 text-primary-foreground" />
                 </div>
               </Link>
@@ -36,8 +36,8 @@ export function BottomNav() {
             <Link
               key={tab.to}
               to={tab.to}
-              className={`flex flex-col items-center gap-0.5 px-3 py-2 text-xs transition-colors ${
-                isActive ? "text-primary" : "text-muted-foreground"
+              className={`flex flex-col items-center gap-0.5 px-3 py-2 text-xs transition-all duration-200 ${
+                isActive ? "text-primary scale-105" : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <tab.icon className={`h-5 w-5 ${isActive ? "text-primary" : ""}`} />
