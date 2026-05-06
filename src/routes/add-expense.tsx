@@ -8,7 +8,7 @@ export const Route = createFileRoute("/add-expense")({
   component: AddExpense,
   head: () => ({
     meta: [
-      { title: "Add Expense — Finova" },
+      { title: "Add Expense — FinNova" },
       { name: "description", content: "Add a new expense to track your spending." },
     ],
   }),
