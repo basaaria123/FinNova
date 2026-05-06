@@ -150,6 +150,11 @@
     box-shadow: var(--shadow-card);
     border: 1px solid var(--color-border);
   }
+  .font-brand {
+    font-family: var(--font-family-brand);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
 }
 
 @keyframes fade-in-up {
