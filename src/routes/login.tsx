@@ -51,15 +51,16 @@ function LoginPage() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
-      <div className="w-full max-w-sm">
+      <div className="w-full max-w-sm animate-fade-in-up">
         {/* Logo */}
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl gradient-primary shadow-glow">
+          <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl gradient-primary shadow-glow animate-pulse-glow">
             <span className="text-2xl font-bold text-primary-foreground">F</span>
           </div>
           <h1 className="font-brand text-2xl" style={{ color: 'var(--finova-metal-blue)' }}>
             <span style={{ opacity: 0.85 }}>Fin</span>Nova
           </h1>
+          <p className="mt-1 text-sm text-muted-foreground">Your smart expense companion</p>
         </div>
 
         {/* Toggle */}
@@ -67,7 +68,7 @@ function LoginPage() {
           <button
             type="button"
             onClick={() => { setMode("login"); setError(""); }}
-            className={`flex-1 rounded-lg py-2.5 text-sm font-semibold transition-all ${
+            className={`flex-1 rounded-lg py-2.5 text-sm font-semibold transition-all duration-200 ${
               mode === "login" ? "bg-card shadow-card text-foreground" : "text-muted-foreground"
             }`}
           >
@@ -76,7 +77,7 @@ function LoginPage() {
           <button
             type="button"
             onClick={() => { setMode("signup"); setError(""); }}
-            className={`flex-1 rounded-lg py-2.5 text-sm font-semibold transition-all ${
+            className={`flex-1 rounded-lg py-2.5 text-sm font-semibold transition-all duration-200 ${
               mode === "signup" ? "bg-card shadow-card text-foreground" : "text-muted-foreground"
             }`}
           >
@@ -87,14 +88,14 @@ function LoginPage() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {mode === "signup" && (
-            <div>
+            <div className="animate-fade-in-up">
               <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Full Name</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="John Doe"
-                className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30"
+                className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all duration-200"
               />
             </div>
           )}
@@ -105,7 +106,7 @@ function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all duration-200"
             />
           </div>
           <div>
@@ -115,31 +116,31 @@ function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
-              className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all duration-200"
             />
           </div>
           {mode === "signup" && (
-            <div>
+            <div className="animate-fade-in-up">
               <label className="mb-1.5 block text-xs font-medium text-muted-foreground">Confirm Password</label>
               <input
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30"
+                className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all duration-200"
               />
             </div>
           )}
 
           {error && (
-            <div className="rounded-xl bg-destructive/10 px-4 py-2.5 text-xs font-medium text-destructive">
+            <div className="animate-fade-in-up rounded-xl bg-destructive/10 px-4 py-2.5 text-xs font-medium text-destructive">
               {error}
             </div>
           )}
 
           <button
             type="submit"
-            className="w-full rounded-xl gradient-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform active:scale-[0.98]"
+            className="btn-animated w-full rounded-xl gradient-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow"
           >
             {mode === "login" ? "Login" : "Create Account"}
           </button>

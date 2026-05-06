@@ -127,3 +127,27 @@ export function useAuth() {
 
   return { user, login, signup, logout };
 }
+
+export function useTheme() {
+  const [theme, setThemeState] = useState<"light" | "dark">(() => {
+    if (typeof window === "undefined") return "light";
+    return (localStorage.getItem("finova_theme") as "light" | "dark") || "light";
+  });
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const root = document.documentElement;
+    if (theme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+    localStorage.setItem("finova_theme", theme);
+  }, [theme]);
+
+  const toggleTheme = useCallback(() => {
+    setThemeState((prev) => (prev === "light" ? "dark" : "light"));
+  }, []);
+
+  return { theme, toggleTheme };
+}
