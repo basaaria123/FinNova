@@ -53,6 +53,7 @@
   --color-success: var(--success);
   --color-warning: var(--warning);
   --font-display: var(--font-family-display);
+  --font-brand: var(--font-family-brand);
 }
 
 :root {
@@ -100,6 +101,7 @@
   --warning: oklch(0.75 0.18 70);
 
   --font-family-display: "Inter", system-ui, -apple-system, sans-serif;
+  --font-family-brand: "Orbitron", "Inter", system-ui, sans-serif;
 
   --gradient-primary: linear-gradient(135deg, var(--finova-blue), var(--finova-purple));
   --gradient-card: linear-gradient(135deg, oklch(0.55 0.22 265 / 8%), oklch(0.55 0.2 295 / 5%));

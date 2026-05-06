@@ -21,7 +21,7 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
           <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary-foreground/20 backdrop-blur-sm">
             <span className="text-4xl font-bold text-primary-foreground">F</span>
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-primary-foreground">Finova</h1>
+          <h1 className="text-3xl font-bold tracking-tight text-primary-foreground font-brand"><span className="opacity-90">Fin</span>Nova</h1>
           <p className="mt-1 text-sm text-primary-foreground/70">Smart Expense Tracker</p>
         </div>
       </div>
@@ -35,7 +35,7 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
           <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl gradient-primary shadow-glow">
             <span className="text-2xl font-bold text-primary-foreground">F</span>
           </div>
-          <h1 className="text-2xl font-bold text-foreground">Welcome to Finova</h1>
+          <h1 className="text-2xl font-bold text-foreground">Welcome to <span className="font-brand">FinNova</span></h1>
           <p className="mt-3 text-muted-foreground leading-relaxed">
             Track your expenses, manage budgets, and gain smart insights — all in Indian Rupees.
           </p>
