@@ -1,4 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, useLocation } from "@tanstack/react-router";
 import { BottomNav } from "@/components/BottomNav";
 import { SplashAndOnboarding } from "@/components/SplashAndOnboarding";
 
@@ -67,11 +67,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  const location = useLocation();
+  const isLogin = location.pathname === "/login";
+
   return (
     <SplashAndOnboarding>
       <div className="mx-auto max-w-lg min-h-screen bg-background">
         <Outlet />
-        <BottomNav />
+        {!isLogin && <BottomNav />}
       </div>
     </SplashAndOnboarding>
   );

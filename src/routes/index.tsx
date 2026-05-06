@@ -45,9 +45,16 @@ function Dashboard() {
   return (
     <div className="px-4 pb-24 pt-6">
       {/* Header */}
-      <div className="mb-6">
+      <div className="mb-6 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl gradient-primary">
+            <span className="text-base font-bold text-primary-foreground">F</span>
+          </div>
+          <h1 className="font-brand text-lg" style={{ color: 'var(--finova-metal-blue)' }}>
+            <span style={{ opacity: 0.85 }}>Fin</span>Nova
+          </h1>
+        </div>
         <p className="text-sm text-muted-foreground">Welcome back 👋</p>
-        <h1 className="text-xl font-bold text-foreground">Dashboard</h1>
       </div>
 
       {/* Summary Cards */}
