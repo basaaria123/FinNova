@@ -67,11 +67,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
+  const location = useLocation();
+  const isLogin = location.pathname === "/login";
+
   return (
     <SplashAndOnboarding>
       <div className="mx-auto max-w-lg min-h-screen bg-background">
         <Outlet />
-        <BottomNav />
+        {!isLogin && <BottomNav />}
       </div>
     </SplashAndOnboarding>
   );
