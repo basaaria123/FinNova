@@ -47,16 +47,16 @@ function Dashboard() {
   return (
     <div className="px-4 pb-24 pt-6">
       {/* Header */}
-      <div className="mb-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl gradient-primary">
-            <span className="text-base font-bold text-primary-foreground">F</span>
+      <div className="mb-6 flex items-center justify-between animate-fade-in-up">
+        <div className="flex items-center gap-2.5">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl overflow-hidden shadow-glow">
+            <img src={finovaLogo} alt="FinNova" width={40} height={40} className="h-full w-full object-contain" />
           </div>
           <h1 className="font-brand text-lg" style={{ color: 'var(--finova-metal-blue)' }}>
             <span style={{ opacity: 0.85 }}>Fin</span>Nova
           </h1>
         </div>
-        <p className="text-sm text-muted-foreground">Welcome back 👋</p>
+        <p className="text-sm text-muted-foreground">Hi, {user?.name?.split(' ')[0] || 'there'} 👋</p>
       </div>
 
       {/* Summary Cards */}
