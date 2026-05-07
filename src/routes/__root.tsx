@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts, useLocation } from "@tanstack/react-router";
 import { BottomNav } from "@/components/BottomNav";
 import { SplashAndOnboarding } from "@/components/SplashAndOnboarding";
+import { AuthProvider } from "@/hooks/use-finova-store";
 
 import appCss from "../styles.css?url";
 
@@ -71,11 +72,13 @@ function RootComponent() {
   const isLogin = location.pathname === "/login";
 
   return (
-    <SplashAndOnboarding>
-      <div className="mx-auto max-w-lg min-h-screen bg-background">
-        <Outlet />
-        {!isLogin && <BottomNav />}
-      </div>
-    </SplashAndOnboarding>
+    <AuthProvider>
+      <SplashAndOnboarding>
+        <div className="mx-auto max-w-lg min-h-screen bg-background">
+          <Outlet />
+          {!isLogin && <BottomNav />}
+        </div>
+      </SplashAndOnboarding>
+    </AuthProvider>
   );
 }

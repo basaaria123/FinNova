@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, createContext, useContext, type ReactNode } from "react";
 import type { Expense, Budget, SavingsGoal } from "@/lib/types";
 
 function loadJSON<T>(key: string, fallback: T): T {
@@ -93,7 +93,18 @@ export interface AuthUser {
   email: string;
 }
 
-export function useAuth() {
+// ---- Shared Auth Context ----
+
+interface AuthContextValue {
+  user: AuthUser | null;
+  login: (email: string, password: string) => string | null;
+  signup: (name: string, email: string, password: string) => string | null;
+  logout: () => void;
+}
+
+const AuthContext = createContext<AuthContextValue | null>(null);
+
+export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(() =>
     loadJSON("finova_auth_user", null)
   );
@@ -125,7 +136,25 @@ export function useAuth() {
     if (typeof window !== "undefined") localStorage.removeItem("finova_auth_user");
   }, []);
 
-  return { user, login, signup, logout };
+  return (
+    <AuthContext value={{ user, login, signup, logout }}>
+      {children}
+    </AuthContext>
+  );
+}
+
+export function useAuth(): AuthContextValue {
+  const ctx = useContext(AuthContext);
+  if (!ctx) {
+    // Fallback for SSR or outside provider – return no-op
+    return {
+      user: null,
+      login: () => "Auth not available",
+      signup: () => "Auth not available",
+      logout: () => {},
+    };
+  }
+  return ctx;
 }
 
 export function useTheme() {
