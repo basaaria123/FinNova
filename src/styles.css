@@ -233,28 +233,37 @@
 }
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 20px -4px oklch(0.55 0.22 265 / 30%); }
-  50% { box-shadow: 0 0 32px -2px oklch(0.55 0.22 265 / 50%); }
+  50% { box-shadow: 0 0 36px -2px oklch(0.55 0.22 265 / 55%); }
 }
 @keyframes logo-appear {
-  0% { opacity: 0; transform: scale(0.8); }
-  100% { opacity: 1; transform: scale(1); }
+  0% { opacity: 0; transform: scale(0.6) rotate(-5deg); }
+  50% { opacity: 1; transform: scale(1.05) rotate(1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
 }
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
 @keyframes float-up {
-  0% { opacity: 0; transform: translateY(24px); }
+  0% { opacity: 0; transform: translateY(24px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes slide-in-bottom {
+  0% { opacity: 0; transform: translateY(100%); }
   100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes glow-rotate {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(30deg); }
 }
 .animate-fade-in-up {
   animation: fade-in-up 0.5s ease-out forwards;
 }
 .animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+  animation: pulse-glow 2.5s ease-in-out infinite;
 }
 .animate-logo-appear {
-  animation: logo-appear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: logo-appear 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 .animate-shimmer {
   background: linear-gradient(90deg, transparent 30%, oklch(0.55 0.22 265 / 10%) 50%, transparent 70%);
@@ -263,4 +272,10 @@
 }
 .animate-float-up {
   animation: float-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.animate-slide-in-bottom {
+  animation: slide-in-bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.animate-glow-rotate {
+  animation: glow-rotate 4s ease-in-out infinite alternate;
 }
