@@ -21,6 +21,7 @@ export const Route = createFileRoute("/")({
 function Dashboard() {
   const { expenses, deleteExpense } = useExpenses();
   const { budget } = useBudget();
+  const { user } = useAuth();
 
   const now = new Date();
   const monthStart = startOfMonth(now);
