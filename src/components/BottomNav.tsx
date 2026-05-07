@@ -19,8 +19,8 @@ export function BottomNav() {
   const location = useLocation();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 glass border-t border-border/50 safe-area-bottom">
-      <div className="mx-auto flex max-w-lg items-center justify-around px-2 py-1">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 glass border-t border-border/50 safe-area-bottom animate-slide-in-bottom">
+      <div className="mx-auto flex max-w-lg items-center justify-around px-2 py-1.5">
         {tabs.map((tab) => {
           const isActive = location.pathname === tab.to;
           if (tab.isCenter) {
