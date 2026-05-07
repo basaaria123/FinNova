@@ -41,12 +41,13 @@ function ProfilePage() {
     <div className="px-4 pb-24 pt-6">
       {/* Header */}
       <div className="mb-6 flex items-center gap-4 animate-fade-in-up">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full gradient-primary text-xl font-bold text-primary-foreground shadow-glow">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full gradient-primary text-2xl font-bold text-primary-foreground shadow-glow animate-pulse-glow">
           {user?.name?.charAt(0)?.toUpperCase() || "U"}
         </div>
         <div className="flex-1">
           <h1 className="text-xl font-bold text-foreground">{user?.name || "User"}</h1>
           <p className="text-sm text-muted-foreground">{user?.email || "Manage your finances"}</p>
+          <p className="text-xs text-primary font-medium mt-0.5">FinNova Member</p>
         </div>
       </div>
 

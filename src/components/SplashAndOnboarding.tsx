@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useOnboarding, useAuth } from "@/hooks/use-finova-store";
 import { useNavigate, useLocation } from "@tanstack/react-router";
+import finovaLogo from "@/assets/finova-logo.png";
 
 export function SplashAndOnboarding({ children }: { children: React.ReactNode }) {
   const { seen, complete } = useOnboarding();
@@ -11,45 +12,34 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
   const [phase, setPhase] = useState<"splash" | "onboarding" | "done">("splash");
   const [slide, setSlide] = useState(0);
 
-  // Only run client-side to avoid hydration mismatch
   useEffect(() => {
     setMounted(true);
-    if (seen) {
-      setPhase("done");
-    }
+    if (seen) setPhase("done");
   }, [seen]);
 
   useEffect(() => {
     if (phase === "splash" && mounted) {
       const t = setTimeout(() => {
-        if (seen) {
-          setPhase("done");
-        } else {
-          setPhase("onboarding");
-        }
+        setPhase(seen ? "done" : "onboarding");
       }, 2200);
       return () => clearTimeout(t);
     }
   }, [phase, mounted, seen]);
 
-  // Redirect unauthenticated users to login
   useEffect(() => {
     if (mounted && phase === "done" && !user && location.pathname !== "/login") {
       navigate({ to: "/login" });
     }
   }, [mounted, phase, user, location.pathname, navigate]);
 
-  // During SSR or before mount, render children to avoid hydration mismatch
-  if (!mounted) {
-    return <>{children}</>;
-  }
+  if (!mounted) return <>{children}</>;
 
   if (phase === "splash") {
     return (
       <div className="fixed inset-0 z-[100] flex items-center justify-center gradient-primary">
         <div className="animate-logo-appear text-center">
-          <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary-foreground/20 backdrop-blur-sm">
-            <span className="text-4xl font-bold text-primary-foreground">F</span>
+          <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-3xl bg-primary-foreground/20 backdrop-blur-sm overflow-hidden animate-pulse-glow shadow-glow">
+            <img src={finovaLogo} alt="FinNova" width={96} height={96} className="h-20 w-20 object-contain drop-shadow-lg" />
           </div>
           <h1 className="text-3xl font-bold tracking-tight text-primary-foreground font-brand">
             <span className="opacity-90">Fin</span>Nova
@@ -76,7 +66,6 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
           <h1 className="text-2xl font-bold text-foreground">{slides[slide].title}</h1>
           <p className="mt-3 text-muted-foreground leading-relaxed">{slides[slide].desc}</p>
 
-          {/* Dots */}
           <div className="mt-6 flex justify-center gap-2">
             {slides.map((_, i) => (
               <div
@@ -119,10 +108,7 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
     );
   }
 
-  // If not logged in and not on login page, show nothing (redirect handles it)
-  if (!user && location.pathname !== "/login") {
-    return null;
-  }
+  if (!user && location.pathname !== "/login") return null;
 
   return <>{children}</>;
 }
