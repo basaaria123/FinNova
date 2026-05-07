@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts, useLocation } from "@tanstack/react-router";
 import { BottomNav } from "@/components/BottomNav";
 import { SplashAndOnboarding } from "@/components/SplashAndOnboarding";
+import { AuthProvider } from "@/hooks/use-finova-store";
 
 import appCss from "../styles.css?url";
 
