@@ -72,11 +72,13 @@ function RootComponent() {
   const isLogin = location.pathname === "/login";
 
   return (
-    <SplashAndOnboarding>
-      <div className="mx-auto max-w-lg min-h-screen bg-background">
-        <Outlet />
-        {!isLogin && <BottomNav />}
-      </div>
-    </SplashAndOnboarding>
+    <AuthProvider>
+      <SplashAndOnboarding>
+        <div className="mx-auto max-w-lg min-h-screen bg-background">
+          <Outlet />
+          {!isLogin && <BottomNav />}
+        </div>
+      </SplashAndOnboarding>
+    </AuthProvider>
   );
 }
