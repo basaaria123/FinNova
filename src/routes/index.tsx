@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { useExpenses, useBudget } from "@/hooks/use-finova-store";
+import { useExpenses, useBudget, useAuth } from "@/hooks/use-finova-store";
 import { formatINR } from "@/lib/format";
 import { CATEGORIES } from "@/lib/types";
+import finovaLogo from "@/assets/finova-logo.png";
 import {
   startOfMonth, endOfMonth, startOfWeek, endOfWeek, isWithinInterval, parseISO, format,
 } from "date-fns";
