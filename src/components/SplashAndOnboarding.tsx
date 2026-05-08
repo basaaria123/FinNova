@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { useOnboarding, useAuth } from "@/hooks/use-finova-store";
+import { useAuth } from "@/hooks/use-finova-store";
 import { useNavigate, useLocation } from "@tanstack/react-router";
 import finovaLogo from "@/assets/finova-logo.png";
 
 export function SplashAndOnboarding({ children }: { children: React.ReactNode }) {
-  const { seen, complete } = useOnboarding();
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -18,12 +17,10 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     if (phase === "splash" && mounted) {
-      const t = setTimeout(() => {
-        setPhase(seen ? "done" : "onboarding");
-      }, 2200);
+      const t = setTimeout(() => setPhase("onboarding"), 2200);
       return () => clearTimeout(t);
     }
-  }, [phase, mounted, seen]);
+  }, [phase, mounted]);
 
   useEffect(() => {
     if (mounted && phase === "done" && !user && location.pathname !== "/login") {
@@ -38,23 +35,26 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
       <div className="fixed inset-0 z-[100] flex items-center justify-center gradient-primary animate-gradient-shift overflow-hidden">
         <div className="ambient-orbs" />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="h-[420px] w-[420px] rounded-full border border-primary-foreground/10 animate-ring-spin" />
+          <div className="h-[480px] w-[480px] rounded-full border border-primary-foreground/10 animate-ring-spin" />
         </div>
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="h-[300px] w-[300px] rounded-full border border-primary-foreground/15 animate-ring-spin" style={{ animationDuration: '10s', animationDirection: 'reverse' }} />
+          <div className="h-[340px] w-[340px] rounded-full border border-primary-foreground/15 animate-ring-spin" style={{ animationDuration: '10s', animationDirection: 'reverse' }} />
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="h-[220px] w-[220px] rounded-full border border-primary-foreground/20 animate-ring-spin" style={{ animationDuration: '6s' }} />
         </div>
         <div className="animate-logo-appear text-center relative z-10">
-          <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-3xl bg-primary-foreground/20 backdrop-blur-sm overflow-hidden animate-pulse-glow shadow-glow">
-            <img src={finovaLogo} alt="FinNova" width={96} height={96} className="h-20 w-20 object-contain drop-shadow-lg" />
+          <div className="mx-auto mb-4 flex h-28 w-28 items-center justify-center rounded-3xl bg-primary-foreground/20 backdrop-blur-sm overflow-hidden animate-pulse-glow shadow-glow">
+            <img src={finovaLogo} alt="FinNova" width={112} height={112} className="h-24 w-24 object-contain drop-shadow-lg" />
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-primary-foreground font-brand">
+          <h1 className="text-4xl font-bold tracking-tight text-primary-foreground font-brand">
             <span className="opacity-90">Fin</span>Nova
           </h1>
-          <p className="mt-1 text-sm text-primary-foreground/70">Smart Expense Tracker</p>
+          <p className="mt-2 text-sm text-primary-foreground/75 tracking-wide">SMART · EXPENSE · TRACKER</p>
           <div className="mt-6 flex justify-center gap-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground/60 animate-pulse" style={{ animationDelay: '0ms' }} />
-            <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground/60 animate-pulse" style={{ animationDelay: '150ms' }} />
-            <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground/60 animate-pulse" style={{ animationDelay: '300ms' }} />
+            <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground/70 animate-pulse" style={{ animationDelay: '0ms' }} />
+            <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground/70 animate-pulse" style={{ animationDelay: '150ms' }} />
+            <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground/70 animate-pulse" style={{ animationDelay: '300ms' }} />
           </div>
         </div>
       </div>
@@ -63,26 +63,52 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
 
   if (phase === "onboarding") {
     const slides = [
-      { icon: "📊", title: "Track Expenses", desc: "Log every rupee you spend with smart categories and instant insights." },
-      { icon: "💰", title: "Budget Smarter", desc: "Set monthly budgets and savings goals to stay on track effortlessly." },
-      { icon: "📈", title: "AI Insights", desc: "Get personalized spending analysis and smart tips to save more." },
+      {
+        icon: "📊",
+        title: "Track Every Rupee",
+        desc: "Effortlessly log expenses with smart categories and instant visual insights.",
+        accent: "from-blue-500/20 to-purple-500/20",
+      },
+      {
+        icon: "💰",
+        title: "Budget Smarter",
+        desc: "Set monthly budgets and savings goals. Stay on track with real-time alerts.",
+        accent: "from-purple-500/20 to-pink-500/20",
+      },
+      {
+        icon: "📈",
+        title: "AI-Powered Insights",
+        desc: "Get personalized spending analysis and smart tips to save more every month.",
+        accent: "from-teal-500/20 to-blue-500/20",
+      },
     ];
 
-    return (
-      <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background px-6">
-        <div className="animate-fade-in-up max-w-sm text-center w-full">
-          <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl gradient-primary shadow-glow animate-pulse-glow">
-            <span className="text-2xl">{slides[slide].icon}</span>
-          </div>
-          <h1 className="text-2xl font-bold text-foreground">{slides[slide].title}</h1>
-          <p className="mt-3 text-muted-foreground leading-relaxed">{slides[slide].desc}</p>
+    const finish = () => {
+      setPhase("done");
+      if (!user) navigate({ to: "/login" });
+    };
 
-          <div className="mt-6 flex justify-center gap-2">
+    return (
+      <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background px-6 overflow-hidden">
+        <div className="ambient-orbs" />
+        <div key={slide} className="animate-float-up max-w-sm text-center w-full relative z-10">
+          <div className="relative mx-auto mb-8 h-32 w-32">
+            <div className="absolute inset-0 rounded-full border border-primary/20 animate-ring-spin" />
+            <div className="absolute inset-3 rounded-full border border-primary/30 animate-ring-spin" style={{ animationDuration: '10s', animationDirection: 'reverse' }} />
+            <div className="absolute inset-6 flex items-center justify-center rounded-2xl gradient-primary shadow-glow animate-pulse-glow">
+              <span className="text-4xl">{slides[slide].icon}</span>
+            </div>
+          </div>
+
+          <h1 className="text-2xl font-bold text-foreground tracking-tight">{slides[slide].title}</h1>
+          <p className="mt-3 text-muted-foreground leading-relaxed px-2">{slides[slide].desc}</p>
+
+          <div className="mt-8 flex justify-center gap-2">
             {slides.map((_, i) => (
               <div
                 key={i}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === slide ? "w-6 bg-primary" : "w-2 bg-muted-foreground/30"
+                className={`h-2 rounded-full transition-all duration-500 ${
+                  i === slide ? "w-8 gradient-primary shadow-glow" : "w-2 bg-muted-foreground/30"
                 }`}
               />
             ))}
@@ -90,25 +116,16 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
 
           <button
             onClick={() => {
-              if (slide < slides.length - 1) {
-                setSlide(slide + 1);
-              } else {
-                complete();
-                setPhase("done");
-                navigate({ to: "/login" });
-              }
+              if (slide < slides.length - 1) setSlide(slide + 1);
+              else finish();
             }}
             className="btn-animated mt-8 w-full rounded-xl gradient-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-glow"
           >
-            {slide < slides.length - 1 ? "Next" : "Get Started"}
+            {slide < slides.length - 1 ? "Next →" : "Get Started"}
           </button>
           {slide < slides.length - 1 && (
             <button
-              onClick={() => {
-                complete();
-                setPhase("done");
-                navigate({ to: "/login" });
-              }}
+              onClick={finish}
               className="mt-3 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               Skip
