@@ -40,23 +40,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     loadJSON("finova_auth_user", null)
   );
 
-  const login = useCallback((email: string, _password: string) => {
+  const login = useCallback((email: string, password: string) => {
+    const key = email.trim().toLowerCase();
     const users: Record<string, { name: string; password: string }> = loadJSON("finova_users", {});
-    const entry = users[email];
+    const entry = users[key];
     if (!entry) return "No account found with this email";
-    if (entry.password !== _password) return "Incorrect password";
-    const u: AuthUser = { name: entry.name, email };
+    if (entry.password !== password) return "Incorrect password";
+    const u: AuthUser = { name: entry.name, email: key };
     setUser(u);
     saveJSON("finova_auth_user", u);
     return null;
   }, []);
 
   const signup = useCallback((name: string, email: string, password: string) => {
+    const key = email.trim().toLowerCase();
     const users: Record<string, { name: string; password: string }> = loadJSON("finova_users", {});
-    if (users[email]) return "An account with this email already exists";
-    users[email] = { name, password };
+    if (users[key]) return "An account with this email already exists";
+    users[key] = { name: name.trim(), password };
     saveJSON("finova_users", users);
-    const u: AuthUser = { name, email };
+    const u: AuthUser = { name: name.trim(), email: key };
     setUser(u);
     saveJSON("finova_auth_user", u);
     return null;
@@ -68,9 +70,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const resetPassword = useCallback((email: string, newPassword: string) => {
+    const key = email.trim().toLowerCase();
     const users: Record<string, { name: string; password: string }> = loadJSON("finova_users", {});
-    if (!users[email]) return "No account found with this email";
-    users[email].password = newPassword;
+    if (!users[key]) return "No account found with this email";
+    users[key].password = newPassword;
     saveJSON("finova_users", users);
     return null;
   }, []);

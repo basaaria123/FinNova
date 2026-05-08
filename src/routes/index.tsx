@@ -45,7 +45,9 @@ function Dashboard() {
   const recentExpenses = expenses.slice(0, 5);
 
   return (
-    <div className="px-4 pb-24 pt-6">
+    <div className="relative px-4 pb-24 pt-6">
+      <div className="ambient-orbs" />
+      <div className="relative z-10">
       {/* Header */}
       <div className="mb-6 flex items-center justify-between animate-fade-in-up">
         <div className="flex items-center gap-2.5">
@@ -145,6 +147,7 @@ function Dashboard() {
             })}
           </div>
         )}
+      </div>
       </div>
     </div>
   );
