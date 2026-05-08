@@ -14,8 +14,7 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     setMounted(true);
-    if (seen) setPhase("done");
-  }, [seen]);
+  }, []);
 
   useEffect(() => {
     if (phase === "splash" && mounted) {
