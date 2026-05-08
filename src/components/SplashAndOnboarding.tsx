@@ -35,8 +35,15 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
 
   if (phase === "splash") {
     return (
-      <div className="fixed inset-0 z-[100] flex items-center justify-center gradient-primary">
-        <div className="animate-logo-appear text-center">
+      <div className="fixed inset-0 z-[100] flex items-center justify-center gradient-primary animate-gradient-shift overflow-hidden">
+        <div className="ambient-orbs" />
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="h-[420px] w-[420px] rounded-full border border-primary-foreground/10 animate-ring-spin" />
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="h-[300px] w-[300px] rounded-full border border-primary-foreground/15 animate-ring-spin" style={{ animationDuration: '10s', animationDirection: 'reverse' }} />
+        </div>
+        <div className="animate-logo-appear text-center relative z-10">
           <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-3xl bg-primary-foreground/20 backdrop-blur-sm overflow-hidden animate-pulse-glow shadow-glow">
             <img src={finovaLogo} alt="FinNova" width={96} height={96} className="h-20 w-20 object-contain drop-shadow-lg" />
           </div>
@@ -44,6 +51,11 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
             <span className="opacity-90">Fin</span>Nova
           </h1>
           <p className="mt-1 text-sm text-primary-foreground/70">Smart Expense Tracker</p>
+          <div className="mt-6 flex justify-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground/60 animate-pulse" style={{ animationDelay: '0ms' }} />
+            <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground/60 animate-pulse" style={{ animationDelay: '150ms' }} />
+            <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground/60 animate-pulse" style={{ animationDelay: '300ms' }} />
+          </div>
         </div>
       </div>
     );
