@@ -78,8 +78,9 @@ function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
-      <div className="w-full max-w-sm animate-fade-in-up">
+    <div className="relative flex min-h-screen flex-col items-center justify-center bg-background px-6 overflow-hidden">
+      <div className="ambient-orbs" />
+      <div className="w-full max-w-sm animate-fade-in-up relative z-10">
         {/* Logo */}
         <div className="mb-8 text-center">
           <div className="mx-auto mb-3 flex h-20 w-20 items-center justify-center rounded-2xl overflow-hidden animate-pulse-glow shadow-glow">
