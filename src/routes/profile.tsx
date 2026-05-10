@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSavingsGoals, useAuth, useTheme } from "@/hooks/use-finova-store";
 import { formatINR } from "@/lib/format";
 import { useNavigate } from "@tanstack/react-router";
+import { PreviousTransactions } from "@/components/PreviousTransactions";
 
 export const Route = createFileRoute("/profile")({
   component: ProfilePage,
@@ -50,6 +51,10 @@ function ProfilePage() {
           <p className="text-xs text-primary font-medium mt-0.5">FinNova Member</p>
         </div>
       </div>
+
+      {/* Savings Goals */}
+      {/* Previous Transactions */}
+      <PreviousTransactions />
 
       {/* Savings Goals */}
       <div className="mb-6">
