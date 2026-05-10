@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, createContext, useContext, type ReactNode } from "react";
+import { useState, useCallback, useEffect, useRef, createContext, useContext, type ReactNode } from "react";
 import type { Expense, Budget, SavingsGoal } from "@/lib/types";
 
 // ---- Helpers ----
@@ -110,13 +110,19 @@ export function useExpenses() {
   const key = userKey("expenses", user?.email);
 
   const [expenses, setExpenses] = useState<Expense[]>(() => loadJSON(key, []));
+  const loadedKey = useRef(key);
 
-  // Re-load when user changes
+  // Re-load when user (key) changes
   useEffect(() => {
     setExpenses(loadJSON(key, []));
+    loadedKey.current = key;
   }, [key]);
 
-  useEffect(() => saveJSON(key, expenses), [key, expenses]);
+  useEffect(() => {
+    // Don't save until we've loaded for this key (prevents clobbering on key change)
+    if (loadedKey.current !== key) return;
+    saveJSON(key, expenses);
+  }, [key, expenses]);
 
   const addExpense = useCallback((e: Omit<Expense, "id">) => {
     setExpenses((prev) => [{ ...e, id: crypto.randomUUID() }, ...prev]);
@@ -134,12 +140,17 @@ export function useBudget() {
   const key = userKey("budget", user?.email);
 
   const [budget, setBudgetState] = useState<Budget>(() => loadJSON(key, { monthly: 0 }));
+  const loadedKey = useRef(key);
 
   useEffect(() => {
     setBudgetState(loadJSON(key, { monthly: 0 }));
+    loadedKey.current = key;
   }, [key]);
 
-  useEffect(() => saveJSON(key, budget), [key, budget]);
+  useEffect(() => {
+    if (loadedKey.current !== key) return;
+    saveJSON(key, budget);
+  }, [key, budget]);
 
   const setBudget = useCallback((monthly: number) => {
     setBudgetState({ monthly });
@@ -153,12 +164,17 @@ export function useSavingsGoals() {
   const key = userKey("goals", user?.email);
 
   const [goals, setGoals] = useState<SavingsGoal[]>(() => loadJSON(key, []));
+  const loadedKey = useRef(key);
 
   useEffect(() => {
     setGoals(loadJSON(key, []));
+    loadedKey.current = key;
   }, [key]);
 
-  useEffect(() => saveJSON(key, goals), [key, goals]);
+  useEffect(() => {
+    if (loadedKey.current !== key) return;
+    saveJSON(key, goals);
+  }, [key, goals]);
 
   const addGoal = useCallback((g: Omit<SavingsGoal, "id">) => {
     setGoals((prev) => [...prev, { ...g, id: crypto.randomUUID() }]);
