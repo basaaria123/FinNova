@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, createContext, useContext, type ReactNode } from "react";
+import { useState, useCallback, useEffect, useRef, createContext, useContext, type ReactNode } from "react";
 import type { Expense, Budget, SavingsGoal } from "@/lib/types";
 
 // ---- Helpers ----
