@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSavingsGoals, useAuth, useTheme } from "@/hooks/use-finova-store";
 import { formatINR } from "@/lib/format";
 import { useNavigate } from "@tanstack/react-router";
+import { PreviousTransactions } from "@/components/PreviousTransactions";
 
 export const Route = createFileRoute("/profile")({
   component: ProfilePage,
