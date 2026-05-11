@@ -156,7 +156,6 @@ Possible enhancements include:
 
 - Cloud synchronization
 - Multi-device support
-- Bank account integration
 - Advanced analytics
 - Export reports (PDF/CSV)
 - Bill reminders
