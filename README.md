@@ -175,3 +175,8 @@ Possible enhancements include:
 This project is intended for educational and development purposes.
 
 ---
+
+# Team Members
+
+- Basaaria Imroz - AIML-A
+- Mehraj Valliya - AIML-A
