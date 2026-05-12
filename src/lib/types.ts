@@ -25,6 +25,7 @@ export const CATEGORIES = [
   { name: "Bills", icon: "📄", color: "oklch(0.6 0.22 330)" },
   { name: "Health", icon: "💊", color: "oklch(0.65 0.2 145)" },
   { name: "Education", icon: "📚", color: "oklch(0.7 0.15 80)" },
+  { name: "Savings", icon: "🐖", color: "oklch(0.62 0.18 160)" },
   { name: "Other", icon: "📦", color: "oklch(0.5 0.03 270)" },
 ] as const;
 
