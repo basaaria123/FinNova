@@ -177,5 +177,5 @@ This project is intended for educational and development purposes.
 ---
 
 TEAM MEMBERS
-BASAARIA IMROZ
-MEHRAJ VALLIYA
+- BASAARIA IMROZ
+- MEHRAJ VALLIYA
