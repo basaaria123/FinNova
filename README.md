@@ -1,11 +1,15 @@
-# FinNova – Personal Expense Tracker
+# FinNova – Smart Expense Tracker & Budget Planner
 
 FinNova is a modern personal finance and expense tracking mobile application designed to help users monitor their spending, manage budgets, and gain insights into their financial habits.
 
 The app provides a simple and intuitive interface to record daily expenses, track budgets, and visualize spending patterns.
 
 ---
+# Project Banner
 
+![Project Banner](https://github.com/basaaria123/FinNova/blob/main/FinNova%20exceptional%20.png?raw=true)
+
+---
 # Overview
 
 Managing personal finances can be challenging. FinNova simplifies this process by allowing users to:
@@ -175,6 +179,7 @@ This project is intended for educational and development purposes.
 
 ---
 
-TEAM MEMBERS
-- BASAARIA IMROZ
-- MEHRAJ VALLIYA
+# Team Members
+
+- Basaaria Imroz
+- Mehraj Valliya
