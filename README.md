@@ -36,6 +36,14 @@ The application increases financial literacy by helping users understand spendin
 ## SDG 8 — Decent Work & Economic Growth
 By encouraging organized financial planning and savings habits, FinNova contributes toward improved economic productivity and personal financial well-being.
 
+## SDG 9 — Industry, Innovation and Infrastructure
+Demonstrates innovative AI-assisted financial application development using modern scalable architecture.
+
+## SDG 10 — Reduced Inequalities
+Provides accessible and beginner-friendly financial management tools for all users.
+
+## SDG 12 — Responsible Consumption and Production
+Encourages responsible spending habits and sustainable financial decision-making.
 ---
 
 # Problem Statement
