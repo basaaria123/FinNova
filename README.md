@@ -44,6 +44,7 @@ Provides accessible and beginner-friendly financial management tools for all use
 
 ## SDG 12 — Responsible Consumption and Production
 Encourages responsible spending habits and sustainable financial decision-making.
+
 ---
 
 # Problem Statement
