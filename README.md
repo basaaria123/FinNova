@@ -1,60 +1,71 @@
-# FinNova – Smart Expense Tracker & Budget Planner
+# FinNova — Smart Expense Tracker & Budget Planner
 
-FinNova is a modern personal finance and expense tracking mobile application designed to help users monitor their spending, manage budgets, and gain insights into their financial habits.
-
-The app provides a simple and intuitive interface to record daily expenses, track budgets, and visualize spending patterns.
+> A modern AI-assisted personal finance management application focused on budgeting, expense tracking, savings management, and financial awareness.
 
 ---
+
 # Project Banner
 
 ![Project Banner](https://github.com/basaaria123/FinNova/blob/main/FinNova%20exceptional%20.png?raw=true)
 
 ---
-# Overview
 
-Managing personal finances can be challenging. FinNova simplifies this process by allowing users to:
+# Product Overview
 
+FinNova is a smart expense tracking and budgeting application designed to help users monitor spending habits, manage budgets, and improve financial awareness through a clean and intuitive mobile interface.
+
+The application simplifies personal finance management by enabling users to:
 - Track daily expenses
 - Set and monitor monthly budgets
-- Categorize spending
-- View financial insights and trends
-- Monitor progress toward savings goals
+- Analyze spending trends
+- Create savings goals
+- View smart financial insights
 
-The app focuses on simplicity, clarity, and real-time financial awareness.
-
----
-
-# Features
-
-## 1. Home Dashboard
-
-- Displays monthly and weekly spending summary
-- Shows recent transactions
-- Visual indicator of monthly budget usage
-- Quick access to add expenses
+FinNova was developed using **Lovable**, an AI-assisted development platform that accelerated rapid prototyping, modular system development, and responsive UI implementation.
 
 ---
 
-## 2. Budget Management
+# UN SDG Global Impact Alignment
 
-- Set and edit monthly budget
-- Track spent vs remaining amount
-- Category-wise spending breakdown
-- Visual progress indicators
+## SDG 1 — No Poverty
+FinNova promotes responsible financial management and budgeting discipline, helping users reduce unnecessary spending and improve financial stability.
+
+## SDG 4 — Quality Education
+The application increases financial literacy by helping users understand spending behavior and budgeting practices through analytics and insights.
+
+## SDG 8 — Decent Work & Economic Growth
+By encouraging organized financial planning and savings habits, FinNova contributes toward improved economic productivity and personal financial well-being.
 
 ---
 
-## 3. Expense Tracking
+# Problem Statement
 
-Users can easily add expenses by entering:
+Many students and young professionals struggle to:
+- Monitor daily expenses
+- Maintain savings discipline
+- Understand spending patterns
+- Use overly complicated budgeting applications
 
-- Amount
-- Category
-- Date
-- Optional note
+Traditional finance applications often contain unnecessary complexity and poor usability for beginner users.
+
+FinNova addresses these issues through:
+- Simple expense management
+- Budget monitoring
+- Savings goal management
+- Financial analytics dashboards
+
+---
+
+# Key Features
+
+## 1. Smart Expense Tracking
+Users can:
+- Add and manage daily expenses
+- Categorize transactions
+- Track financial history
+- Add optional expense notes
 
 ### Supported Categories
-
 - Food
 - Transport
 - Shopping
@@ -66,110 +77,433 @@ Users can easily add expenses by entering:
 
 ---
 
-## 4. Insights & Analytics
-
-The insights section helps users understand spending behavior with:
-
-- Smart spending insights
-- 14-day spending trend graph
-- Category breakdown visualization
-
----
-
-## 5. Profile & Settings
-
-Users can manage their account and preferences:
-
-- View profile details
-- Track previous transactions
-- Set savings goals
-- Theme settings
-- Notification settings
-- Currency settings
+## 2. Budget Management
+Features include:
+- Monthly budget setup
+- Budget usage monitoring
+- Remaining balance tracking
+- Category-wise spending analysis
 
 ---
 
-## 6. Savings Goals
-
-Users can create savings goals and track progress toward targets.
+## 3. Savings Goals
+Users can:
+- Create savings targets
+- Monitor progress
+- Track milestone completion
 
 ### Example Goals
-
 - Vacation Fund
 - Emergency Savings
 - Education Fund
 
-Custom contribution amounts can also be added.
+---
+
+## 4. Insights & Analytics
+The analytics system provides:
+- Spending trend visualization
+- Financial behavior insights
+- Category spending analysis
+- 14-day spending trend charts
 
 ---
 
-# App Screens
+## 5. User Profile & Settings
+Users can manage:
+- Profile information
+- Currency preferences
+- Theme settings
+- Notification settings
+- Savings targets
 
-The application includes the following main screens:
+---
 
+# Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| Lovable | AI-assisted application development |
+| Responsive UI Components | Modern interface design |
+| Modular Architecture | Maintainability & scalability |
+| Data Visualization Components | Financial insights & analytics |
+
+---
+
+# Software Development Life Cycle (SDLC) Journey
+
+## 1. Planning Phase
+- Identified financial management challenges
+- Defined target users
+- Planned project scope and features
+
+---
+
+## 2. Requirement Analysis
+Defined:
+- Functional requirements
+- Non-functional requirements
+- User expectations
+- Budget tracking workflows
+
+---
+
+## 3. System Design
+Designed:
+- UI/UX layouts
+- Navigation structure
+- Analytics dashboards
+- Modular architecture
+
+---
+
+## 4. Development & Implementation
+Implemented:
+- Expense tracking modules
+- Savings systems
+- Budget management features
+- Insights dashboards
+
+---
+
+## 5. Testing & Resilience
+Tested:
+- Input validation
+- Error handling
+- Edge case handling
+- Navigation stability
+- Responsive layouts
+
+---
+
+## 6. Refactoring & Optimization
+Improved:
+- Code modularity
+- UI responsiveness
+- Performance optimization
+- Reusable component structure
+
+---
+
+## 7. Deployment Preparation
+Finalized:
+- UI consistency
+- Responsiveness verification
+- Code cleanup
+- Future scalability planning
+
+---
+
+# Installation Guide
+
+## Prerequisites
+
+Ensure the following tools are installed:
+- Git
+- Node.js
+- npm or yarn
+
+---
+
+## Clone Repository
+
+```bash
+git clone https://github.com/basaaria123/FinNova.git
+```
+
+---
+
+## Navigate Into Project Folder
+
+```bash
+cd FinNova
+```
+
+---
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+or
+
+```bash
+yarn install
+```
+
+---
+
+## Run Development Server
+
+```bash
+npm run dev
+```
+
+or
+
+```bash
+yarn dev
+```
+
+---
+
+# Visual Architecture
+
+## FinNova System Architecture
+
+```text
+                          ┌─────────────────────────┐
+                          │        User Layer       │
+                          │ Students / Professionals│
+                          └────────────┬────────────┘
+                                       │
+                                       ▼
+┌──────────────────────────────────────────────────────────────┐
+│                    FinNova Mobile Interface                 │
+│-------------------------------------------------------------│
+│  • Home Dashboard                                           │
+│  • Budget Overview                                          │
+│  • Add Expense Screen                                       │
+│  • Insights & Analytics                                     │
+│  • Profile & Settings                                       │
+└───────────────────────────┬──────────────────────────────────┘
+                            │
+                            ▼
+┌──────────────────────────────────────────────────────────────┐
+│                   Application Logic Layer                   │
+│-------------------------------------------------------------│
+│  • Expense Management Engine                                │
+│  • Budget Calculation System                                │
+│  • Savings Goal Manager                                     │
+│  • Analytics & Insights Processor                           │
+│  • Validation & Error Handling                              │
+└───────────────────────────┬──────────────────────────────────┘
+                            │
+                            ▼
+┌──────────────────────────────────────────────────────────────┐
+│                     Data Management Layer                   │
+│-------------------------------------------------------------│
+│  • Transaction Records                                      │
+│  • Budget Data                                              │
+│  • Savings Goals                                            │
+│  • User Preferences                                         │
+│  • Settings & Notifications                                 │
+└───────────────────────────┬──────────────────────────────────┘
+                            │
+                            ▼
+┌──────────────────────────────────────────────────────────────┐
+│                     Visualization Layer                     │
+│-------------------------------------------------------------│
+│  • Spending Trend Charts                                    │
+│  • Category Breakdown Graphs                                │
+│  • Budget Progress Indicators                               │
+│  • Smart Financial Insights                                 │
+└──────────────────────────────────────────────────────────────┘
+```
+
+---
+
+# Navigation Architecture
+
+## FinNova Application Navigation Flow
+
+```text
+                           ┌──────────────┐
+                           │ Splash Screen│
+                           └──────┬───────┘
+                                  │
+                                  ▼
+                        ┌──────────────────┐
+                        │ Home Dashboard   │
+                        │------------------│
+                        │ • Monthly Spend  │
+                        │ • Weekly Spend   │
+                        │ • Budget Status  │
+                        │ • Transactions   │
+                        └───┬──────┬───────┘
+                            │      │
+        ┌───────────────────┘      └───────────────────┐
+        ▼                                              ▼
+
+┌─────────────────┐                         ┌─────────────────┐
+│ Budget Overview │                         │ Add Expense     │
+│-----------------│                         │-----------------│
+│ • Monthly Budget│                         │ • Enter Amount  │
+│ • Spending Bars │                         │ • Select Category│
+│ • Category Data │                         │ • Pick Date     │
+└────────┬────────┘                         │ • Add Notes     │
+         │                                  └────────┬────────┘
+         │                                           │
+         ▼                                           ▼
+
+┌─────────────────────────────────────────────────────────────┐
+│                    Expense Database                        │
+└──────────────────────────┬──────────────────────────────────┘
+                           │
+                           ▼
+
+┌─────────────────┐                         ┌─────────────────┐
+│ Insights Screen │                         │ Profile Screen  │
+│-----------------│                         │-----------------│
+│ • Smart Insights│                         │ • User Details  │
+│ • Trend Graphs  │                         │ • Savings Goals │
+│ • Pie Charts    │                         │ • Settings      │
+│ • Analytics     │                         │ • Notifications │
+└─────────────────┘                         └─────────────────┘
+```
+
+---
+
+# Screen Flow Mapping
+
+```text
+Home Dashboard
+     │
+     ├── Budget Overview
+     │       ├── Monthly Budget
+     │       └── Category Spending
+     │
+     ├── Add Expense
+     │       ├── Amount Entry
+     │       ├── Category Selection
+     │       ├── Date Picker
+     │       └── Notes Input
+     │
+     ├── Insights & Analytics
+     │       ├── Smart Insights
+     │       ├── Spending Trend Graph
+     │       └── Category Breakdown
+     │
+     └── Profile & Settings
+             ├── Savings Goals
+             ├── Notifications
+             ├── Currency Settings
+             └── Theme Preferences
+```
+
+---
+
+# User Interaction Workflow
+
+```text
+User Opens App
+        │
+        ▼
+View Dashboard Summary
+        │
+        ▼
+Add Expense Transaction
+        │
+        ▼
+Expense Saved to Database
+        │
+        ▼
+Budget Automatically Updated
+        │
+        ▼
+Analytics & Charts Generated
+        │
+        ▼
+User Monitors Insights & Savings Goals
+```
+
+---
+
+# Testing & Resilience Engineering
+
+## Validation Features
+- Empty input prevention
+- Numeric validation
+- Negative amount restriction
+- Required field checks
+
+---
+
+## Error Handling
+- Null safety checks
+- Graceful fallback handling
+- Protected navigation routing
+- Controlled state management
+
+---
+
+## Edge Case Testing
+
+| Test Scenario | Expected Result | Outcome |
+|---|---|---|
+| Empty expense field | Validation warning displayed | Passed |
+| Negative amount entered | Input rejected | Passed |
+| Invalid profile information | Error message shown | Passed |
+| Missing stored data | Default values loaded | Passed |
+| Rapid repeated actions | Stable navigation maintained | Passed |
+
+---
+
+# Final Gallery
+
+## Main Application Screens
 - Home Dashboard
 - Budget Overview
-- Add Expense
+- Add Expense Screen
 - Insights & Analytics
+- Savings Goals
 - Profile & Settings
 
 ---
 
-# User Interface
+# UI Preview
 
-FinNova follows a clean and modern UI design with:
+### Splash Screen
+![Splash Screen](https://github.com/basaaria123/FinNova/blob/main/Splash%20Screen.jpeg?raw=true)
 
-- Gradient accent colors
-- Card-based layouts
-- Bottom navigation for easy access
-- Simple icons for categories
-- Data visualizations for insights
+### Dashboard Interface
+![Dashboard](https://github.com/basaaria123/FinNova/blob/main/Dashboard.jpeg?raw=true)
 
-The design prioritizes clarity and usability.
+### Budget Overview
+![Budget Overview](https://github.com/basaaria123/FinNova/blob/main/Budget%20Overview.jpeg?raw=true)
 
----
+### Add Expenses 
+![Add Expenses](https://github.com/basaaria123/FinNova/blob/main/Add%20Expense.jpeg?raw=true)
 
-# Navigation Structure
+### Analytics Dashboard
+![Insights](https://github.com/basaaria123/FinNova/blob/main/Smart%20Insights.jpeg?raw=true)
 
-The bottom navigation bar provides quick access to:
-
-| Section | Description |
-|----------|-------------|
-| Home | Dashboard and transactions |
-| Budget | Budget overview and category spending |
-| Add Expense (+) | Add new expense entry |
-| Insights | Financial analytics and charts |
-| Profile | User information and settings |
+### Profile Screen
+![Profile](https://github.com/basaaria123/FinNova/blob/main/Profile.jpeg?raw=true)
 
 ---
 
-# Use Cases
+# Refactoring & Optimization
 
-FinNova is ideal for:
-
-- Students managing daily expenses
-- Individuals tracking monthly spending
-- Users planning savings goals
-- Anyone looking to improve financial awareness
+Throughout development, the following improvements were implemented:
+- Modularized UI components
+- Improved navigation flow
+- Removed redundant code
+- Centralized validation logic
+- Optimized responsive layouts
+- Enhanced maintainability
 
 ---
 
 # Future Improvements
 
-Possible enhancements include:
-
+Planned future enhancements include:
 - Cloud synchronization
-- Multi-device support
-- Advanced analytics
-- Export reports (PDF/CSV)
-- Bill reminders
-- AI-powered financial insights
+- Scanning the input from receipts
+- Advanced analytics dashboards
+- PDF/CSV export support
+- Real-time notifications
+- Multi-device synchronization
+- Secure authentication integration
 
 ---
 
 # Version
 
-**Current Version:** `1.0.0`
+```bash
+Current Version: 3.0.0
+```
 
 ---
 
@@ -181,5 +515,20 @@ This project is intended for educational and development purposes.
 
 # Team Members
 
-- Basaaria Imroz
-- Mehraj Valliya
+- Basaaria Imroz - CSE:AIML(A)
+- Mehraj Valliya - CSE:AIML(A)
+
+---
+
+# Conclusion
+
+FinNova demonstrates the successful implementation of a modern smart expense tracking system developed through a structured Software Development Life Cycle (SDLC) process.
+
+The project combines:
+- AI-assisted development
+- Clean UI/UX principles
+- Financial awareness tools
+- Responsive design
+- Modular architecture
+
+to deliver a scalable and user-friendly budgeting application focused on improving personal financial management.
