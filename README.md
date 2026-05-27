@@ -529,6 +529,31 @@ This project is intended for educational and development purposes.
 
 ---
 
+# 4 weeks Journey:)
+
+## Week 1 
+- The Rough Draft- FinNova_W1_C1
+- The Tech Justification- FinNova_W1_C2
+- The Logic Flow Architechture- FinNova_W1_C3
+
+## Week 2
+- The Motivation Track- The Nights by Avicii
+- The Repo Setup- https://github.com/basaaria123/FinNova.git
+- The UI/Circuit Milestone- FinNova_W2_C3
+- The Heart Of The Project- FinNova_W2_C4
+
+## Week 3
+- The Code Meme and Team Identity- FinNova_W3_C1
+- The Global Impact Mapping- FinNova_W3_C2
+- The Code Error- FinNova_W3_C3
+- The Optimization Milestone- FinNova_W3_C4
+
+## Week 4
+- The Code Contribution and Clean up Check- https://github.com/basaaria123/FinNova.git
+- The "Shark Tank" Pitch Tagline and Poster- FinNova_W4_C2
+- The SDLC Lifecycle Mapping- FinNova_W4_C3
+- The Production- Ready Technical README- https://github.com/basaaria123/FinNova/blob/main/README.md
+
 # Conclusion
 
 FinNova demonstrates the successful implementation of a modern smart expense tracking system developed through a structured Software Development Life Cycle (SDLC) process.
