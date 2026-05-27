@@ -522,13 +522,6 @@ This project is intended for educational and development purposes.
 
 ---
 
-# Team Members
-
-- Basaaria Imroz - CSE:AIML(A)
-- Mehraj Valliya - CSE:AIML(A)
-
----
-
 # 4 weeks Journey:)
 
 ## Week 1 
@@ -553,6 +546,15 @@ This project is intended for educational and development purposes.
 - The "Shark Tank" Pitch Tagline and Poster- FinNova_W4_C2
 - The SDLC Lifecycle Mapping- FinNova_W4_C3
 - The Production- Ready Technical README- https://github.com/basaaria123/FinNova/blob/main/README.md
+
+---
+
+# Team Members
+
+- Basaaria Imroz - CSE:AIML(A)
+- Mehraj Valliya - CSE:AIML(A)
+
+---
 
 # Conclusion
 
