@@ -530,7 +530,7 @@ This project is intended for educational and development purposes.
 - The Logic Flow Architechture- FinNova_W1_C3
 
 ## Week 2
-- The Motivation Track- The Nights by Avicii
+- The Motivation Track- The Nights by Avicii- https://youtu.be/H78YW7ycuwI?list=RDH78YW7ycuwI
 - The Repo Setup- https://github.com/basaaria123/FinNova.git
 - The UI/Circuit Milestone- FinNova_W2_C3
 - The Heart Of The Project- FinNova_W2_C4
