@@ -98,6 +98,7 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
 
     const finish = () => {
       setPhase("done");
+      if (typeof window !== "undefined") localStorage.setItem("finova_splash_seen", "1");
       if (!user) navigate({ to: "/login" });
     };
 
