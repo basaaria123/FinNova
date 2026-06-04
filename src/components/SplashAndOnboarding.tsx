@@ -4,16 +4,29 @@ import { useNavigate, useLocation } from "@tanstack/react-router";
 import finovaLogo from "@/assets/finova-logo.png";
 
 export function SplashAndOnboarding({ children }: { children: React.ReactNode }) {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [mounted, setMounted] = useState(false);
-  const [phase, setPhase] = useState<"splash" | "onboarding" | "done">("splash");
+  // Show splash+onboarding only for first-time visitors who are not logged in.
+  // Once a user has signed in on this device, we skip the splash on subsequent refreshes.
+  const [phase, setPhase] = useState<"splash" | "onboarding" | "done">(() => {
+    if (typeof window === "undefined") return "done";
+    return localStorage.getItem("finova_splash_seen") ? "done" : "splash";
+  });
   const [slide, setSlide] = useState(0);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // If auth resolves and we have a logged-in user, skip the splash entirely.
+  useEffect(() => {
+    if (!loading && user && phase !== "done") {
+      setPhase("done");
+      if (typeof window !== "undefined") localStorage.setItem("finova_splash_seen", "1");
+    }
+  }, [loading, user, phase]);
 
   useEffect(() => {
     if (phase === "splash" && mounted) {
@@ -23,10 +36,10 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
   }, [phase, mounted]);
 
   useEffect(() => {
-    if (mounted && phase === "done" && !user && location.pathname !== "/login") {
+    if (mounted && phase === "done" && !user && !loading && location.pathname !== "/login" && location.pathname !== "/reset-password") {
       navigate({ to: "/login" });
     }
-  }, [mounted, phase, user, location.pathname, navigate]);
+  }, [mounted, phase, user, loading, location.pathname, navigate]);
 
   if (!mounted) return <>{children}</>;
 
