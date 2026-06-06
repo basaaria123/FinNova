@@ -10,10 +10,7 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
   const [mounted, setMounted] = useState(false);
   // Show splash+onboarding only for first-time visitors who are not logged in.
   // Once a user has signed in on this device, we skip the splash on subsequent refreshes.
-  const [phase, setPhase] = useState<"splash" | "onboarding" | "done">(() => {
-    if (typeof window === "undefined") return "done";
-    return localStorage.getItem("finova_splash_seen") ? "done" : "splash";
-  });
+  const [phase, setPhase] = useState<"splash" | "onboarding" | "done">("splash");
   const [slide, setSlide] = useState(0);
 
   useEffect(() => {
@@ -22,11 +19,11 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
 
   // If auth resolves and we have a logged-in user, skip the splash entirely.
   useEffect(() => {
-    if (!loading && user && phase !== "done") {
+    if (!loading && user) {
       setPhase("done");
-      if (typeof window !== "undefined") localStorage.setItem("finova_splash_seen", "1");
     }
-  }, [loading, user, phase]);
+  }, [loading, user]);
+
 
   useEffect(() => {
     if (phase === "splash" && mounted) {
@@ -98,9 +95,9 @@ export function SplashAndOnboarding({ children }: { children: React.ReactNode })
 
     const finish = () => {
       setPhase("done");
-      if (typeof window !== "undefined") localStorage.setItem("finova_splash_seen", "1");
       if (!user) navigate({ to: "/login" });
     };
+
 
     return (
       <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background px-6 overflow-hidden">
